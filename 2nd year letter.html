@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2nd Anniversary Message</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #c9d5ff, #c084fc, #a855f7);
+      color: #fff;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    #hearts-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -10px;
+      color: #fff;
+      font-size: 10px;
+      opacity: 0.4;
+      animation: floatUp 9s linear infinite;
+      z-index: 0;
+      pointer-events: none;
+      filter: blur(0.5px);
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.5;
+      }
+      100% {
+        transform: translateY(-100vh) scale(1.6);
+        opacity: 0;
+      }
+    }
+
+    header {
+      text-align: center;
+      padding: 80px 20px 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    header h1 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.3em;
+      margin-bottom: 10px;
+      color: #fff;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+    }
+
+    header p {
+      font-size: 1em;
+      color: #f5eaff;
+      margin-top: 10px;
+      text-align: center;
+      max-width: 90%;
+    }
+
+    section {
+      max-width: 600px;
+      margin: 100px auto;
+      border-radius: 20px;
+      padding: 30px;
+      position: relative;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #fff;
+      font-weight: 600;
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+    }
+
+    p {
+      text-align: justify;
+      line-height: 1.8;
+      color: #fdfcff;
+      position: relative;
+      z-index: 3;
+      font-size: 0.95em;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    #music {
+      text-align: center;
+    }
+
+    #music audio {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+      margin-top: 10px;
+      outline: none;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    }
+
+    #photos {
+      text-align: center;
+      margin: 60px auto;
+      padding: 25px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      max-width: 600px;
+    }
+
+    .photo-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .photo-grid img {
+      width: 100%;
+      max-width: 170px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .photo-grid img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    footer {
+      text-align: center;
+      margin: 60px 0 80px;
+      color: #fff;
+      font-size: 1.1em;
+      position: relative;
+      z-index: 2;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.9em;
+      }
+      section {
+        margin: 40px 20px;
+        padding: 20px;
+      }
+      p {
+        font-size: 0.9em;
+      }
+    }
+
+    #start-screen {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background: linear-gradient(135deg, #c9d5ff, #c084fc, #a855f7);
+      color: white;
+      text-align: center;
+      z-index: 10;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+    }
+
+    #start-screen h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+
+    #enter-btn {
+      padding: 15px 30px;
+      font-size: 1em;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      background: #a855f7;
+      color: white;
+      transition: 0.3s;
+    }
+
+    #enter-btn:hover {
+      background: #c084fc;
+    }
+  </style>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const container = document.createElement("div");
+      container.id = "hearts-container";
+      document.body.prepend(container);
+
+      const colors = ['#ffffff', '#f5eaff', '#f0abfc'];
+
+      function createHeart() {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.textContent = '💜';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (3 + Math.random() * 3) + 's';
+        heart.style.fontSize = (12 + Math.random() * 20) + 'px';
+        heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+        container.appendChild(heart);
+        setTimeout(() => heart.remove(), 6000);
+      }
+
+      setInterval(createHeart, 300);
+    });
+  </script>
+</head>
+
+<body>
+  <div id="start-screen">
+    <h1>Happy 2nd Anniversary Mommy ko!! 💖💖</h1>
+    <button id="enter-btn">Enter</button>
+  </div>
+
+  <audio id="bg-music" loop>
+    <source src="bgMusic.mp3" type="audio/mpeg">
+  </audio>
+
+  <div id="main-content" style="display: none;">
+    <header>
+      <h1>
+        Happy 2nd Anniversary Mommy ko!! 💖💖
+        <p>Dalawang Taon ng pagmamahalan, tawanan, iyakan, asaran, awayan, at mga memories natin 🥺💖</p>
+      </h1>
+    </header>
+
+    <section id="letter">
+      <h2>Letter pinakamahal kong babae</h2>
+      <p>
+        Dear Baby ko/Asawa ko/Honey ko, <br><br>
+        2 years na po tayo, maraming salamat po sa walang tigil mong pagmamahal.  
+        Hindi ko man palaging nasasabi, pero sobrang nagpapasalamat ako kasi kahit ang dami nating pinagdaanan, andito ka pa rin. LDR man tayo, ramdam ko pa rin kung gaano mo ako kamahal sa bawat effort, sa bawat oras na binibigay mo kahit pagod ka na. Ang hirap minsan, lalo na kapag nagkakatampuhan tayo o ‘pag parang napapagod na tayo pareho, pero kahit gano’n, lagi kong pinipili na manatili, kasi ikaw ang tahanan ko kahit gaano kalayo.
+        <br><br>
+        Dalawang taon na, pero hanggang ngayon, ikaw pa rin ‘yung gusto kong makasama sa bawat araw. Salamat kasi hindi mo ako sinukuan, kahit minsan ang tigas ng ulo ko o kapag hindi tayo magkasundo. Alam kong hindi tayo perpekto, pero gusto kong malaman mo na kahit sa lahat ng gulo, ikaw pa rin ‘yung pipiliin at mamahalin ko araw-araw. Sana magtagal pa tayo, mhie, at sana sa susunod na mga taon, hindi na lang sa screen kita makikita, kundi sa harap ko na, araw-araw.
+        <br><br>
+        Ang dami nating beses na muntik na tayong bumitaw, pero sa bawat pagkakataon na gano’n, mas napapatunayan ko kung gaano kalalim ‘yung pagmamahal natin. Hindi tayo madaling magkaintindihan, minsan pareho tayong matigas, pero kahit gano’n, lagi tayong bumabalik sa isa’t isa. Kasi sa dulo ng lahat ng tampuhan at luha, ikaw pa rin ‘yung gusto kong yakapin, ikaw pa rin ‘yung gusto kong kausap bago matulog.
+        <br><br>
+        Kaya ngayong dalawang taon na tayo, gusto ko lang ulit sabihin na sobrang mahal na mahal kita. Hindi ko man maipakita palagi sa tamang paraan, pero totoo lahat ng nararamdaman ko para sa’yo. Sana magpatuloy tayo, mas matatag, mas maunawain, at mas puno ng pagmamahal. Hangga’t kaya, pipiliin at pipiliin pa rin kita, mhie, araw-araw, taon-taon.
+      </p>
+    </section>
+
+    <section id="photos">
+      <h2>Memories natin 🥺💖</h2>
+      <div class="photo-grid">
+        <img src="pic 1.jpg" alt="Memory 1">
+        <img src="pic 2.jpg" alt="Memory 2">
+        <img src="pic 3.jpg" alt="Memory 3">
+        <img src="pic 4.jpg" alt="Memory 4">
+        <img src="pic 5.jpg" alt="Memory 5">
+      </div>
+    </section>
+    
+    <section id="music">
+      <h2>Team song na ba this? hehehe</h2>
+      <audio id="main-music" controls>
+        <source src="song.mp3" type="audio/mpeg">
+      </audio>
+    </section>
+  </div>
+
+  <script>
+    const enterBtn = document.getElementById('enter-btn');
+    const startScreen = document.getElementById('start-screen');
+    const mainContent = document.getElementById('main-content');
+    const bgMusic = document.getElementById('bg-music');
+
+    enterBtn.addEventListener('click', () => {
+      startScreen.style.display = 'none';
+      mainContent.style.display = 'block';
+      bgMusic.volume = 0.3;
+      bgMusic.play();
+    });
+
+    const mainMusic = document.getElementById('main-music');
+
+    mainMusic.addEventListener('play', () => {
+      let fadeOut = setInterval(() => {
+        if (bgMusic.volume > 0.01) {
+          bgMusic.volume = Math.max(0, bgMusic.volume - 0.02);
+        } else {
+          clearInterval(fadeOut);
+          bgMusic.pause();
+        }
+      }, 200);
+    });
+
+    mainMusic.addEventListener('pause', () => {
+      bgMusic.play();
+      let fadeIn = setInterval(() => {
+        if (bgMusic.volume < 0.3) {
+          bgMusic.volume = Math.min(0.3, bgMusic.volume + 0.02);
+        } else {
+          clearInterval(fadeIn);
+        }
+      }, 200);
+    });
+  </script>
+</body>
+</html>
